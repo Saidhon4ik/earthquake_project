@@ -4,8 +4,8 @@
       {
         "type": "TridentNotebook",
         "typeProperties": {
-          "notebookId": "423893e2-3643-405f-9485-8c9c96e4a288",
-          "workspaceId": "15c4e734-f99e-4278-b77e-7df37270f462",
+          "notebookId": "96e4a288-8c9c-9485-405f-3643423893e2",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
           "parameters": {
             "start_date": {
               "value": {
@@ -31,15 +31,13 @@
           "secureOutput": false
         },
         "name": "Bronze Notebook",
-        "state": "Inactive",
-        "onInactiveMarkAs": "Succeeded",
         "dependsOn": []
       },
       {
         "type": "TridentNotebook",
         "typeProperties": {
-          "notebookId": "613a561b-f3bb-4618-9329-75b3917d75d2",
-          "workspaceId": "15c4e734-f99e-4278-b77e-7df37270f462",
+          "notebookId": "917d75d2-75b3-9329-4618-f3bb613a561b",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
           "parameters": {
             "start_date": {
               "value": {
@@ -58,8 +56,6 @@
           "secureOutput": false
         },
         "name": "Silver Notebook",
-        "state": "Inactive",
-        "onInactiveMarkAs": "Succeeded",
         "dependsOn": [
           {
             "activity": "Bronze Notebook",
