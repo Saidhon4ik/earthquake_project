@@ -135,5 +135,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "a86e355ae41cc8b5c1dd",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "earthquake_events_gold"
+              }
+            },
+            "Property": "time"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }

@@ -59,32 +59,14 @@ print(start_date)
 
 # CELL ********************
 
-# df now is a Spark DataFrame containing JSON data
-df = spark.read.option("multiline", "true").json(f"Files/{start_date}_earthquake_data.json")
 
-# METADATA ********************
+# Read all raw earthquake JSON files from Bronze
+df = spark.read.option("multiline", "true").json(
+    "Files/*_earthquake_data.json"
+)
 
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
-display(df.select('geometry.coordinates'))
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
-df = spark.read.option("multiline", "true").json("Files/2026-11-02_earthquake_data.json")
-# df now is a Spark DataFrame containing JSON data from "Files/2026-11-02_earthquake_data.json".
 display(df)
+
 
 # METADATA ********************
 
@@ -140,6 +122,34 @@ df = df.\
 
 # appending the data to the gold table
 df.write.mode('overwrite').saveAsTable('earthquake_events_silver')
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+from pyspark.sql.functions import col, sum, when
+
+silver_df.select(
+    *[
+        sum(when(col(c).isNull(), 1).otherwise(0)).alias(c)
+        for c in silver_df.columns
+    ]
+).show()
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
 
 # METADATA ********************
 

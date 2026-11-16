@@ -85,9 +85,9 @@ else:
 
 # CELL ********************
 
-df = spark.read.option("multiline", "true").json("Files/2026-11-02_earthquake_data.json")
-# df now is a Spark DataFrame containing JSON data from "Files/2026-11-02_earthquake_data.json".
-display(df)
+print("Start date:", start_date)
+print("End date:", end_date)
+print("Records fetched:", len(data))
 
 # METADATA ********************
 
@@ -98,9 +98,11 @@ display(df)
 
 # CELL ********************
 
-import os
+df = spark.read.option("multiline", "true").json(
+    "Files/*_earthquake_data.json"
+)
 
-os.listdir("/lakehouse/default/Files")
+display(df)
 
 # METADATA ********************
 
