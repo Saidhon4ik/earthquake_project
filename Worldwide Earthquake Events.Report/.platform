@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Worldwide Earthquake Events"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "09c7930d-7e8d-b6de-447a-2483deb00dec"
+  }
+}

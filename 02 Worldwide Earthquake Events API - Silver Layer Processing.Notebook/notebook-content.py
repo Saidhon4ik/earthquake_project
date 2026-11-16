@@ -67,17 +67,6 @@ df = spark.read.option("multiline", "true").json(f"Files/{start_date}_earthquake
 
 # CELL ********************
 
-display(df)
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
 display(df.select('geometry.coordinates'))
 
 # METADATA ********************
@@ -128,17 +117,6 @@ df.\
 
 # CELL ********************
 
-display(df)
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
 from pyspark.sql.types import TimestampType
 # Convert 'time' and 'updated' columns from milliseconds to timestamp format for clearer datetime representation.
 df = df.\
@@ -146,17 +124,6 @@ df = df.\
     withColumn('updated', col('updated')/1000).\
     withColumn('time', col('time').cast(TimestampType())).\
     withColumn('updated', col('updated').cast(TimestampType()))
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
-display(df)
 
 # METADATA ********************
 
