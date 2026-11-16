@@ -16,6 +16,10 @@
 # META           "id": "2b8ac475-1859-43af-b4ff-4e4a7ee3cd24"
 # META         }
 # META       ]
+# META     },
+# META     "environment": {
+# META       "environmentId": "df4aabcc-4e27-9732-40bb-d433af724d68",
+# META       "workspaceId": "00000000-0000-0000-0000-000000000000"
 # META     }
 # META   }
 # META }
@@ -135,7 +139,7 @@ df = df.\
 # CELL ********************
 
 # appending the data to the gold table
-df.write.mode('append').saveAsTable('earthquake_events_silver')
+df.write.mode('overwrite').saveAsTable('earthquake_events_silver')
 
 # METADATA ********************
 

@@ -17,7 +17,10 @@
 # META         }
 # META       ]
 # META     },
-# META     "environment": {}
+# META     "environment": {
+# META       "environmentId": "df4aabcc-4e27-9732-40bb-d433af724d68",
+# META       "workspaceId": "00000000-0000-0000-0000-000000000000"
+# META     }
 # META   }
 # META }
 
@@ -27,7 +30,7 @@
 
 # CELL ********************
 
-%pip install reverse-geocoder
+import reverse_geocoder as rg
 
 # METADATA ********************
 
@@ -179,8 +182,38 @@ display(df_with_location_sig_class)
 
 # CELL ********************
 
-# appending the data to the gold table
-df_with_location_sig_class.write.mode('append').saveAsTable('earthquake_events_gold')
+print("Total rows:", df_with_location_sig_class.count())
+print("Unique IDs:", df_with_location_sig_class.select("id").distinct().count())
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+df_with_location_sig_class.write.mode("overwrite").saveAsTable("earthquake_events_gold")
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# MARKDOWN ********************
+
+# #df_with_location_sig_class.write.mode("append").saveAsTable("earthquake_events_gold") it was like this, but with append it takes much more time to get the results from the pipeline. with "append" it takes like 12 minutes for it to run
+
+# MARKDOWN ********************
+
+
+# CELL ********************
+
+print("Total rows:", df_with_location.count())
+print("Unique IDs:", df_with_location.select("id").distinct().count())
 
 # METADATA ********************
 
